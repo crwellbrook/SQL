@@ -1,0 +1,25 @@
+--Create a Coffee shop database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, quantity INTEGER, name TEXT, temp TEXT, price INTEGER);
+
+INSERT INTO store VALUES(1, 1, "coffee", "hot", 2);
+INSERT INTO store VALUES(2, 1, "coffee", "cold", 3);
+INSERT INTO store VALUES(3, 1, "latte", "hot", 5);
+INSERT INTO store VALUES(4, 1, "latte", "iced", 5.5);
+INSERT INTO store VALUES(5, 1, "mocha", "hot", 6);
+INSERT INTO store VALUES(6, 1, "mocha", "cold", 6.5);
+INSERT INTO store VALUES(7, 1, "peppermint mocha", "hot", 7);
+INSERT INTO store VALUES(8, 1, "peppermint mocha", 'iced', 7.5);
+INSERT INTO store VALUES(9, 1, 'vanilla latte', 'hot', 6.5);
+INSERT INTO store VALUES(10, 1, 'vanilla latte', 'iced', 7);
+INSERT INTO store VALUES(11, 1, 'water', 'iced', 1);
+INSERT INTO store VALUES (12, 1, 'milk', 'iced', 1.5);
+INSERT INTO store VALUES(13, 1, 'hot chocolate', 'hot', 2.5);
+INSERT INTO store VALUES(14, 1, 'chocolate milk', 'iced', 2.5);
+INSERT INTO store VALUES(15, 1, 'orange juice', 'iced', 3);
+
+Display a database ordered by price
+SELECT * FROM store ORDER by PRICE asc;
+
+Display which item is the most expensive
+SELECT MAX(price) FROM store;
