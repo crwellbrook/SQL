@@ -1,0 +1,20 @@
+/* Create table about the people and what they do here */
+CREATE TABLE movie_stars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    movie TEXT, spouse TEXT, number_films INTEGER);
+
+INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Brad Pitt", "Moneyball", "Angelina Jolie", 108);
+INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Angelina Jolie", "Lara Croft", "Brad Pitt", 57);
+INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Tom Cruise", "Top Gun", "Nicole Kidman", 43);
+INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Nicole Kidman", "Golden Compass", "Tom Cruise", 89);
+INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Dwayne Johnson", "Jumanji", "Lauren Hashian", 63);
+INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Robin Wright", "Moneyball", "Clement Giraudet", 41);
+
+SELECT fullname, number_films FROM movie_stars ORDER BY number_films DESC;
+
+SELECT movie_stars.fullname, partner.spouse FROM movie_stars
+JOIN movie_stars partner
+ON movie_stars.fullname=partner.spouse;
+
+SELECT fullname, movie FROM movie_stars WHERE movie = "Moneyball"; 
