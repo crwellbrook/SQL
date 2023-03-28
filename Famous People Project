@@ -2,19 +2,45 @@
 CREATE TABLE movie_stars (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     fullname TEXT,
-    movie TEXT, spouse TEXT, number_films INTEGER);
+    movie TEXT, spouse TEXT, number_films       INTEGER);
+    
+CREATE TABLE money (personal_ID INTEGER, average_income INTEGER , endorsement_deals INTEGER, number_sequels INTEGER, best_friend TEXT, number_children INTEGER);
+
 
 INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Brad Pitt", "Moneyball", "Angelina Jolie", 108);
 INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Angelina Jolie", "Lara Croft", "Brad Pitt", 57);
 INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Tom Cruise", "Top Gun", "Nicole Kidman", 43);
 INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Nicole Kidman", "Golden Compass", "Tom Cruise", 89);
 INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Dwayne Johnson", "Jumanji", "Lauren Hashian", 63);
+
 INSERT into movie_stars (fullname, movie, spouse, number_films) VALUES ("Robin Wright", "Moneyball", "Clement Giraudet", 41);
 
+INSERT into money VALUES (1, 500000000, 3, 1, "Tom Cruise", 4);
+INSERT into money VALUES (2, 40000000, 2, 4, "Robin Wright", 4);
+INSERT into money VALUES (3, 1000000000, 1, 4, "Brad Pitt", 3);
+INSERT into money VALUES (4, 30000000, 4, 1, "Dwayne Johnson", 4);
+INSERT into money VALUES (5, 1000000000000, 10, 3, "Nicole Kidman", 3);
+INSERT into money VALUES (6, 20000000, 0, 1, "Angelina Jolie", 1);
+
+/* Order by most films to least */
 SELECT fullname, number_films FROM movie_stars ORDER BY number_films DESC;
 
+/* Internal join to organize movie star & spouse */
 SELECT movie_stars.fullname, partner.spouse FROM movie_stars
 JOIN movie_stars partner
 ON movie_stars.fullname=partner.spouse;
 
+/* Determine which stars were in the movie Moneyball */
+
 SELECT fullname, movie FROM movie_stars WHERE movie = "Moneyball"; 
+
+/* Join two lists to discover best friends of each actor */
+SELECT movie_stars.fullname, money.best_friend FROM movie_stars
+JOIN money
+ON movie_stars.id=money.personal_id;
+
+/* Join lists to compile important financial information and order by highest average income */
+SELECT movie_stars.fullname, money.average_income, money.endorsement_deals, money.number_sequels FROM movie_stars
+JOIN money
+ON movie_stars.id=money.personal_id
+ORDER BY money.average_income DESC;
